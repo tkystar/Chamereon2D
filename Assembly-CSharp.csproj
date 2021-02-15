@@ -64,6 +64,18 @@
   <ItemGroup>
     <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\AnimationController.cs" />
     <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\Ogawa\Analog.cs" />
+    <Compile Include="Assets\Ogawa\JoyConTest1.cs" />
+    <Compile Include="Assets\Ogawa\JoyConTest2.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Examples\JoystickPlayerExample.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Scripts\Base\Joystick.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+    <Compile Include="Assets\Ogawa\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Ogawa\Move.cs" />
+    <Compile Include="Assets\Ogawa\Move2.cs" />
     <Compile Include="Assets\Scripts\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
     <Compile Include="Assets\Scripts\ChangeGravity.cs" />
@@ -72,6 +84,7 @@
     <Compile Include="Assets\Scripts\GravityFreeAgent.cs" />
     <Compile Include="Assets\Scripts\Hool.cs" />
     <Compile Include="Assets\Scripts\LeftHand.cs" />
+    <Compile Include="Assets\Scripts\MiniGame04\Chase.cs" />
     <Compile Include="Assets\Scripts\MovingOnPlanet.cs" />
     <Compile Include="Assets\Scripts\MyObject.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
