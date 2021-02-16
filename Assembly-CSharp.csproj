@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\AnimationController.cs" />
     <Compile Include="Assets\2D Tactics Character Animated\Assets\Scripts\LookAtCamera.cs" />
+    <Compile Include="Assets\EnemyGFX.cs" />
     <Compile Include="Assets\Ogawa\Analog.cs" />
     <Compile Include="Assets\Ogawa\JoyConTest1.cs" />
     <Compile Include="Assets\Ogawa\JoyConTest2.cs" />
@@ -85,6 +86,9 @@
     <Compile Include="Assets\Scripts\Hool.cs" />
     <Compile Include="Assets\Scripts\LeftHand.cs" />
     <Compile Include="Assets\Scripts\MiniGame04\Chase.cs" />
+    <Compile Include="Assets\Scripts\MiniGame04\JustMove.cs" />
+    <Compile Include="Assets\Scripts\MiniGame04\PlayerControl2.cs" />
+    <Compile Include="Assets\Scripts\MiniGame04\PlayerControlScript.cs" />
     <Compile Include="Assets\Scripts\MovingOnPlanet.cs" />
     <Compile Include="Assets\Scripts\MyObject.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
@@ -92,8 +96,6 @@
     <Compile Include="Assets\Scripts\PlanetGravity.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Player5.cs" />
-    <Compile Include="Assets\Scripts\PlayerControl2.cs" />
-    <Compile Include="Assets\Scripts\PlayerControlScript.cs" />
     <Compile Include="Assets\Scripts\Raycastfromcenter.cs" />
     <Compile Include="Assets\Scripts\Raymanager.cs" />
     <Compile Include="Assets\Scripts\RightHand.cs" />
@@ -305,6 +307,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/2019.4.2f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>D:/Untiy/Chameleon2D/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Program Files/2019.4.2f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -763,7 +768,20 @@
       <HintPath>D:/Untiy/Chameleon2D/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{3AB35A4E-507C-9369-3B03-6EA0F37EA4EA}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{08C9DAF0-BFA1-3474-EC05-CBC01EB4EC7D}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{D0E5B004-8765-093F-BB13-11B4F6C0088E}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
