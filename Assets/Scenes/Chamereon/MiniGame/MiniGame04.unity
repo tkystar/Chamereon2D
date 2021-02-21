@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cfae2ff1dbc6144bc7ccbef75b056d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SPEED: {x: 2, y: 2}
+  Speed: 50
   leftIMG: {fileID: 196964271}
   rightIMG: {fileID: 264543510}
   upIMG: {fileID: 1471218530}

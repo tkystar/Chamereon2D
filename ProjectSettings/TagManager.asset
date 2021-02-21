@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TileMap
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Cube
   - Obstacle
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: 3
     uniqueID: 2642137999
+    locked: 0
+  - name: 4
+    uniqueID: 406033079
     locked: 0

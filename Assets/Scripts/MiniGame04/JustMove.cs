@@ -6,6 +6,7 @@ public class JustMove : MonoBehaviour
 {
     private Rigidbody2D rb;
     public GameObject Camereon;
+    public int Speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class JustMove : MonoBehaviour
 
         if (Input.GetKey("left"))
         {
-            rb.velocity = new Vector2(-120.0f, 0.0f);
+            rb.velocity = new Vector2(-Speed, 0);
             
 
             //hoge.sizeDelta = new Vector2(x2, y2);
@@ -27,7 +28,7 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKey("right"))
         {
-            rb.velocity = new Vector2(120.0f, 0.0f);
+            rb.velocity = new Vector2(Speed, 0);
             
 
             //hoge.sizeDelta = new Vector2(x2, y2);
@@ -35,7 +36,7 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKey("up"))
         {
-            rb.velocity = new Vector2(0.0f, 120.0f);
+            rb.velocity = new Vector2(0, Speed);
             
 
             //hoge.sizeDelta = new Vector2(y1, x1);
@@ -43,14 +44,14 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKey("down"))
         {
-            rb.velocity = new Vector2(0.0f, -120.0f);
+            rb.velocity = new Vector2(0, -Speed);
             
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
         if (Input.GetKeyUp("left"))
         {
-            rb.velocity = new Vector2(0.0f, 0.0f);
+            rb.velocity = new Vector2(0, 0);
 
 
             //hoge.sizeDelta = new Vector2(x2, y2);
@@ -58,7 +59,7 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKeyUp("right"))
         {
-            rb.velocity = new Vector2(0.0f, 0.0f);
+            rb.velocity = new Vector2(0, 0);
 
 
             //hoge.sizeDelta = new Vector2(x2, y2);
@@ -66,7 +67,7 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKeyUp("up"))
         {
-            rb.velocity = new Vector2(0.0f, 0.0f);
+            rb.velocity = new Vector2(0, 0);
 
 
             //hoge.sizeDelta = new Vector2(y1, x1);
@@ -74,7 +75,7 @@ public class JustMove : MonoBehaviour
         }
         else if (Input.GetKeyUp("down"))
         {
-            rb.velocity = new Vector2(0.0f, 0.0f);
+            rb.velocity = new Vector2(0, 0);
 
             //hoge.sizeDelta = new Vector2(y1, x1);
         }

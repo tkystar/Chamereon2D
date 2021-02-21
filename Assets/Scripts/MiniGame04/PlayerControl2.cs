@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerControl2 : MonoBehaviour
 {
     // 速度
-    public Vector2 SPEED = new Vector2(0.05f, 0.05f);
+    public int Speed;
     //Image CamereonIMG;
     //public Sprite CamereonIMG;
     public GameObject leftIMG;
@@ -27,7 +27,8 @@ public class PlayerControl2 : MonoBehaviour
     private Text timerText;
     public GameObject TextObj;
     private Transform NowPos;
-    public Texture2D stage_texture;
+    public GameObject stage_texture;
+    
     public Color TransitionColor;
     public Color startColor;
     public Color endColor;
@@ -56,7 +57,7 @@ public class PlayerControl2 : MonoBehaviour
         //NowPos = Camereon.gameObject.GetComponent<Transform>();
         timerText = TextObj.GetComponent<Text>();
 
-        endColor = stage_texture.GetPixel((int)NowPos.position.x, (int)NowPos.position.y);
+        //endColor = stage_texture.GetPixel((int)NowPos.position.x, (int)NowPos.position.y);
         //Bodycolor = BodyObj.GetComponent<Image>().color;
 
 
@@ -90,7 +91,7 @@ public class PlayerControl2 : MonoBehaviour
 
         if (Input.GetKeyDown("left"))
         {
-            rb.velocity = new Vector2(-120.0f, 0.0f);
+            //rb.velocity = new Vector2(-120.0f, 0.0f);
             leftIMG.SetActive(true);
             rightIMG.SetActive(false);
             upIMG.SetActive(false);
@@ -102,7 +103,7 @@ public class PlayerControl2 : MonoBehaviour
         }
         else if (Input.GetKeyDown("right"))
         {
-            rb.velocity = new Vector2(120.0f, 0.0f);
+            //rb.velocity = new Vector2(120.0f, 0.0f);
             leftIMG.SetActive(false);
             rightIMG.SetActive(true);
             upIMG.SetActive(false);
@@ -114,7 +115,7 @@ public class PlayerControl2 : MonoBehaviour
         }
         else if (Input.GetKeyDown("up"))
         {
-            rb.velocity = new Vector2(0.0f, 120.0f);
+            //rb.velocity = new Vector2(0.0f, 120.0f);
             leftIMG.SetActive(false);
             rightIMG.SetActive(false);
             upIMG.SetActive(true);
@@ -126,7 +127,7 @@ public class PlayerControl2 : MonoBehaviour
         }
         else if (Input.GetKeyDown("down"))
         {
-            rb.velocity = new Vector2(0.0f, -120.0f);
+            //rb.velocity = new Vector2(0.0f, -120.0f);
             leftIMG.SetActive(false);
             rightIMG.SetActive(false);
             upIMG.SetActive(false);
@@ -143,28 +144,28 @@ public class PlayerControl2 : MonoBehaviour
         if (Input.GetKey("left"))
         {
 
-            
+            rb.velocity = new Vector2(-Speed, 0.0f);
             //Position.x -= SPEED.x;
             StopTime = 0;
         }
         else if (Input.GetKey("right"))
         {
 
-            
+            rb.velocity = new Vector2(Speed, 0.0f);
             //Position.x += SPEED.x;
             StopTime = 0;
         }
         else if (Input.GetKey("up"))
         {
 
-            
+            rb.velocity = new Vector2(0.0f, Speed);
             //Position.y += SPEED.y;
             StopTime = 0;
         }
         else if (Input.GetKey("down"))
         {
 
-            
+            rb.velocity = new Vector2(0.0f, -Speed);
             //Position.y -= SPEED.y;
             StopTime = 0;
         }
@@ -227,7 +228,7 @@ public class PlayerControl2 : MonoBehaviour
 
         void ColorCatch(int x, int y)
         {
-            endColor = stage_texture.GetPixel(x, y);
+            //endColor = stage_texture.GetPixel(x, y);
         }
     
 
