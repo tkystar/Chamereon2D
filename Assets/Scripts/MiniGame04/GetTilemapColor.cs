@@ -35,7 +35,7 @@ namespace Pathfinding {
             //var tile = GameObject.FindObjectOfType<Tilemap>();
             rb = this.GetComponent<Rigidbody2D>();
             player.GetComponent<SpriteRenderer>().sprite = tate;
-            AIPath destinationscript = enemy.GetComponent<AIPath>();
+            AIPath destinationscript = enemy.GetComponent<AIPath>();  
         }
 
         // Update is called once per frame
@@ -111,9 +111,9 @@ namespace Pathfinding {
             Vector3Int cellpositionRD = tile.WorldToCell(RDpos);
             Vector3Int cellpositionLU = tile.WorldToCell(LUpos);
             Vector3Int cellpositionLD = tile.WorldToCell(LDpos);
-            var spriteRU = tile.GetSprite(cellpositionRU);
+            
             var sprite = tile.GetSprite(cellPosition);
-
+            var spriteRU = tile.GetSprite(cellpositionRU);
             var spriteRD = tile.GetSprite(cellpositionRD);
             var spriteLU = tile.GetSprite(cellpositionLU);
             var spriteLD = tile.GetSprite(cellpositionLD);
