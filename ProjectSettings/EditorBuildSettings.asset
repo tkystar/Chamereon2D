@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/Main/WesternScene.unity
+    guid: b98e8f0fe1eeaa747a887868b1b27d0b
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/MiniGame/MiniGame04.unity
+    guid: edd6b5a992a1aec4b9d37635397a8995
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/MiniGame/Test/NvigationTileMap.unity
+    guid: 6c7a3091ea3e34c439de3f716c314a37
   m_configObjects: {}

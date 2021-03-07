@@ -6,6 +6,10 @@ TagManager:
   tags:
   - TileMap
   - Items
+  - time
+  - heart
+  - enemy
+  - star
   layers:
   - Default
   - TransparentFX

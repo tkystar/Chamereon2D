@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Tilemaps;
 using UnityEngine.AI;
 
@@ -21,30 +22,48 @@ namespace Pathfinding {
         Vector3 LUpos;
         Vector3 LDpos;
         //public Color CatchColor;
-        public Color GREEN;
-        public Color YELLOW;
+        Color32 GREEN= new Color32(146,224,76,255);
+        Color32 YELLOW = new Color32(253, 227, 83, 255);
         Rigidbody2D rb;
-        Color TransitionColor;
-        public Color startColor;
-        public Color endColor;
+        public Color32 TransitionColor;
+        public Color32 startColor;
+        public Color32 endColor;
         float StopTime;
         public int Speed;
         public AIPath destinationscript;
+        
+        public GameObject TimeText;
+        private Text time;
+        
+        public  float RGBDifference;
+        public int a=10;
+        //private Detection detection;
+        BoxCollider2D collider;
         void Start()
         {
             //var tile = GameObject.FindObjectOfType<Tilemap>();
             rb = this.GetComponent<Rigidbody2D>();
             player.GetComponent<SpriteRenderer>().sprite = tate;
-            AIPath destinationscript = enemy.GetComponent<AIPath>();  
+            AIPath destinationscript = enemy.GetComponent<AIPath>();
+            time = TimeText.GetComponent<Text>();
+            //detection = this.gameObject.GetComponent<Detection>();
+            collider=this.gameObject.GetComponent<BoxCollider2D>();
+            
         }
 
         // Update is called once per frame
         void Update()
         {
+            
             StopTime += Time.deltaTime;
             getcolor();
             Move();
-            TransitionColor = (Color.Lerp(startColor, endColor, StopTime / 4));
+             RGBDifference= Mathf.Abs(endColor.r - startColor.r) + Mathf.Abs(endColor.g - startColor.g) + Mathf.Abs(endColor.b - startColor.b);
+            if(startColor.r!=endColor.r&& startColor.g != endColor.g&& startColor.b != endColor.b)
+            {
+                TransitionColor = (Color32.Lerp(startColor, endColor, 765 * StopTime / a / RGBDifference));
+            }
+            
             player.GetComponent<SpriteRenderer>().color = TransitionColor;
             if (player.GetComponent<SpriteRenderer>().color == endColor)
             {
@@ -122,20 +141,22 @@ namespace Pathfinding {
 
 
 
-            if (sprite.name == "Green" && spriteRU.name == "Green" && spriteRU.name == "Green" && spriteRD.name == "Green" && spriteLU.name == "Green" && spriteLD.name == "Green")
+            if (sprite.name == "Green" && spriteRU.name == "Green" && spriteRU.name == "Green" && spriteRD.name == "Green" && spriteLU.name == "Green" && spriteLD.name == "Green" && rb.velocity == new Vector2(0, 0)) //&& rb.velocity == new Vector2(0, 0)
             {
                 endColor = GREEN;
 
 
 
             }
-            else if (sprite.name == "Yellow" && spriteRU.name == "Yellow" && spriteRU.name == "Yellow" && spriteRD.name == "Yellow" && spriteLU.name == "Yellow" && spriteLD.name == "Yellow")
+            else if (sprite.name == "Yellow" && spriteRU.name == "Yellow" && spriteRU.name == "Yellow" && spriteRD.name == "Yellow" && spriteLU.name == "Yellow" && spriteLD.name == "Yellow" && rb.velocity == new Vector2(0, 0))  //&&rb.velocity == new Vector2(0, 0)
             {
                 endColor = YELLOW;
 
 
             }
         }
+        float size_x;
+        float size_y;
 
         void Move()
         {
@@ -212,21 +233,26 @@ namespace Pathfinding {
             {
                 startColor = TransitionColor;
                 player.GetComponent<SpriteRenderer>().sprite = yoko;
+                collider.size = new Vector2(6, 3);
+                
             }
             else if (Input.GetKeyDown("right"))
             {
                 startColor = TransitionColor;
                 player.GetComponent<SpriteRenderer>().sprite = yoko;
+                collider.size = new Vector2(6, 3);
             }
             else if (Input.GetKeyDown("up"))
             {
                 startColor = TransitionColor;
                 player.GetComponent<SpriteRenderer>().sprite = tate;
+                collider.size = new Vector2(3,6);
             }
             else if (Input.GetKeyDown("down"))
             {
                 startColor = TransitionColor;
                 player.GetComponent<SpriteRenderer>().sprite = tate;
+                collider.size = new Vector2(3, 6);
             }
 
 
