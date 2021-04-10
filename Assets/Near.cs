@@ -21,7 +21,7 @@ public class Near : MonoBehaviour
     {
 
         float distance = (Target.position - camereon.transform.position).magnitude;
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (distance < 7&& once)
         {
             UIImageAppear();
