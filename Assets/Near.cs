@@ -2,39 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine.Utility;
 
-public class Near : MonoBehaviour
+namespace Cinemachine
 {
-    public GameObject Player;
-    Transform Target;
-    public GameObject camereon;
-    public GameObject UIimage;
-    bool once=true;
-    // Start is called before the first frame update
-    void Start()
+    public class Near : MonoBehaviour
     {
-        Target = Player.transform;
-    }
+        public Fungus.Flowchart flowchart;
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        float distance = (Target.position - camereon.transform.position).magnitude;
-        //Debug.Log(distance);
-        if (distance < 7&& once)
+        public GameObject Player;
+        Transform Target;
+        public GameObject camereon;
+        public GameObject UIimage;
+        bool once = true;
+        bool oncee = true;
+        //public GameObject maincamera;
+        // Start is called before the first frame update
+        void Start()
         {
-            UIImageAppear();
+            Target = Player.transform;
 
-            
-        }else if(distance > 7)
+        }
+
+        // Update is called once per frame
+        void Update()
         {
-            once = true;
+
+            float distance = (Target.position - camereon.transform.position).magnitude;
+            //Debug.Log(distance);
+            if (distance < 6 && once)
+            {
+
+                //UIImageAppear();
+                if (oncee)
+                {
+                    flowchart.ExecuteBlock("1-1");
+                    oncee = false;
+                    //maincamera.GetComponent<CinemachineBrain>().enabled = false;
+                }
+
+
+            }
+            else if (distance > 7)
+            {
+                once = true;
+            }
+        }
+        void UIImageAppear()
+        {
+            UIimage.SetActive(true);
+            once = false;
         }
     }
-    void UIImageAppear()
-    {
-        UIimage.SetActive(true);
-        once = false;
-    }
+
 }
