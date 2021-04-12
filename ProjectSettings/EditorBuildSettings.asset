@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chamereon/Main/WesternScene.unity
     guid: b98e8f0fe1eeaa747a887868b1b27d0b
-  - enabled: 1
-    path: Assets/Scenes/Chamereon/MiniGame/MiniGame04.unity
-    guid: edd6b5a992a1aec4b9d37635397a8995
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Chamereon/MiniGame/Test/NvigationTileMap.unity
     guid: 6c7a3091ea3e34c439de3f716c314a37
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/MiniGame/BugCatchGame.unity
+    guid: 9c50d65d0a44f9f4d9b1e3e0592b6c30
   m_configObjects: {}
