@@ -325,17 +325,6 @@ namespace Cinemachine
                 ManualUpdate();
         }
 
-        private void Portraitsta()
-        {
-            Debug.Log("d");
-            this.GetComponent<CinemachineBrain>().enabled = false;
-        }
-        private void Portraitfin()
-        {
-            Debug.Log("d");
-            this.GetComponent<CinemachineBrain>().enabled = true;
-        }
-
         /// <summary>
         /// Call this method explicitly from an external script to update the virtual cameras
         /// and position the main camera, if the UpdateMode is set to ManualUpdate.
