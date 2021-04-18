@@ -14,6 +14,7 @@ public class JustMove : MonoBehaviour
     public GameObject player;
     BoxCollider2D collider;
     Vector3 playertransform;
+
     // Start is called before the first frame update
     void Start()
     {
