@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chamereon/MiniGame/BugCatchGame.unity
     guid: 9c50d65d0a44f9f4d9b1e3e0592b6c30
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/Main/WesternScene1.2.unity
+    guid: 6b570f673aa45bb4cbc42e443674d120
   m_configObjects: {}

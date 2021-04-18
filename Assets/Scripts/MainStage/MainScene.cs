@@ -14,7 +14,7 @@ namespace Western
         {
 
             public GameObject[] GameObjectsTohidden;
-            public GameObject maincamera;
+            //public GameObject maincamera;
             public Scene scene;
             public Fungus.Flowchart flowchart;
             SceneFin scenefin;

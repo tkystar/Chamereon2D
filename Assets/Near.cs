@@ -30,7 +30,7 @@ namespace Cinemachine
 
             float distance = (Target.position - camereon.transform.position).magnitude;
             //Debug.Log(distance);
-            if (distance < 6 && once)
+            if (distance < 4 && once)
             {
 
                 //UIImageAppear();

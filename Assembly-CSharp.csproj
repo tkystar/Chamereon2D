@@ -756,6 +756,7 @@
     <Compile Include="Assets\Samples\Cinemachine\2.7.2\Cinemachine Example Scenes\Shared\Scripts\SpawnInCircle.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.2\Cinemachine Example Scenes\Shared\Scripts\ThirdPersonFollowDistanceModifier.cs" />
     <Compile Include="Assets\Scripts\Ikagame\NobiruCube.cs" />
+    <Compile Include="Assets\Scripts\MainStage\AreaExit.cs" />
     <Compile Include="Assets\Scripts\MainStage\BaseSceneGridController.cs" />
     <Compile Include="Assets\Scripts\MainStage\BiraSave.cs" />
     <Compile Include="Assets\Scripts\MainStage\CaptureFromCameraSample.cs" />
