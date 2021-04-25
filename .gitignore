@@ -50,6 +50,5 @@ Thumbs.db
 #python bytecode cache, for some plugins.
 *.pyc
 
-Library/ScriptAssemblies/*
-Library/PackageCache/*
-Library/Artifacts/*
+/Library/*
+
