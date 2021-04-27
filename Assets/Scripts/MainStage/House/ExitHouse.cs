@@ -32,6 +32,7 @@ namespace Western
                 chamereon.transform.position = _backPos;
                 spawnPosObj.GetComponent<BoxCollider2D>().enabled = false;
                 housemanager.BackEnterHousePos();
+                
             }
         }
 
