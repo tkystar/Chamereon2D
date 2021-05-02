@@ -13,7 +13,7 @@ namespace Western
         public GameObject spawnPosObject;
         public GameObject ExitPosObject;
        
-        private bool _stay;
+        public bool _stay;
         // Start is called before the first frame update
         void Start()
         {
