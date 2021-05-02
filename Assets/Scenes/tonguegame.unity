@@ -450,7 +450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168710157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.93, y: 0.061819248, z: -10.246008}
+  m_LocalPosition: {x: 4.18, y: 0.061819248, z: -10.246008}
   m_LocalScale: {x: 0.63682, y: 0.63682, z: 0.63682}
   m_Children:
   - {fileID: 906696282}
@@ -733,12 +733,12 @@ PrefabInstance:
     - target: {fileID: -48694016172994715, guid: b1dec6cc4a4dd6542aa9f9fa0fd4b5bc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.71
       objectReference: {fileID: 0}
     - target: {fileID: -48694016172994715, guid: b1dec6cc4a4dd6542aa9f9fa0fd4b5bc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: -2.11
       objectReference: {fileID: 0}
     - target: {fileID: -48694016172994715, guid: b1dec6cc4a4dd6542aa9f9fa0fd4b5bc,
         type: 3}
@@ -1398,6 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tonguehead: {fileID: 229428596}
+  BugGenerator: {fileID: 1368713419}
   headimage: {fileID: 205143487}
   speed: 0.4
 --- !u!1 &963194225
@@ -1453,7 +1454,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.1852894
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1592,10 +1593,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObj: {fileID: 8360258702617189455, guid: d8f99541ed1a9bb41a7841e27087a368,
     type: 3}
+  Timer: {fileID: 331644916}
   countTime: 60
   Point: {fileID: 50291809}
   GoalPoint: {fileID: 791732095}
-  Timer: {fileID: 331644916}
   g_point: 100
 --- !u!4 &1368713421
 Transform:
@@ -1676,6 +1677,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1540400345
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1540400347}
+  - component: {fileID: 1540400346}
+  m_Layer: 0
+  m_Name: _FungusState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1540400346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540400345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedFlowchart: {fileID: 0}
+--- !u!4 &1540400347
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540400345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740564194
 GameObject:
