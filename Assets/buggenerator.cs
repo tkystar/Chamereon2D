@@ -8,14 +8,19 @@ public class buggenerator : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     private GameObject enemyObj;
-    public float countTime;
-    public GameObject Point;
-    public GameObject GoalPoint;
+    [Header("制限時間表示オブジェクト")]
     public GameObject Timer;
+    [Tooltip("制限時間(秒)の数値(float型)")]
+    public float countTime;
+    [Header("獲得ポイント表示オブジェクト")]
+    public GameObject Point;
+    [Header("目標のポイント数表示オブジェクト")]
+    public GameObject GoalPoint;
+    [Tooltip("目標ポイント数(int型)")]
+    public int g_point;//目標のポイント数
     public static Text b_point;
     public static Text goal_point;
-    public static Text timekeeper;
-    public int g_point;
+    public static Text timekeeper;//countTimeのtext
     public static int b_sum;
     
     // 敵を生成するまでの時間

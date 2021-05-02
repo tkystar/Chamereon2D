@@ -6,12 +6,16 @@ public class TongueAutoMove : MonoBehaviour
 {
     private Vector3 xn;
     private bool push;
+    private int g_update_point;//目標達成後の次の目標値
+    public static int dificulty;//ゲームの難易度
     public GameObject Tonguehead;
+    public GameObject BugGenerator;
     public GameObject headimage;//カメレオン頭の画像
-    [SerializeField]
-    private float speed;//舌のスピード
+    [Header("舌のスピード")]
+    public float speed;//舌のスピード
     Animator animator;//口の開閉アニメーション
     BoxCollider tongue_collider;//tongueheadのコライダー
+    buggenerator b_generator;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,17 +23,24 @@ public class TongueAutoMove : MonoBehaviour
         xn = transform.localPosition;//ローカル座標の取得
         xn.x = -7.5f;
         transform.localPosition = xn;
-        //speed = 0.03f;
         push = false;
         tongue_collider = Tonguehead.GetComponent<BoxCollider>();
         tongue_collider.enabled = false;
         animator = headimage.GetComponent<Animator>();
+        b_generator = BugGenerator.GetComponent<buggenerator>();
+        dificulty = 1;
+        g_update_point = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
         StartCoroutine("AfterPushDown");
+        if (b_generator.g_point< buggenerator.b_sum)
+        {
+            //dificulty += 1; 
+            SpeedUp();
+        }
                        
     }
 
@@ -71,5 +82,25 @@ public class TongueAutoMove : MonoBehaviour
     {
         push = false;
         animator.SetBool("open", false);
+    }
+
+    void SpeedUp()//舌のスピードアップ＆目標値変更
+    {
+        speed += 0.1f;
+
+        switch (dificulty)
+        {
+            case 2:
+                g_update_point = 200;
+                break;
+            case 3:
+                g_update_point = 300;
+                break;
+            case 4:
+                g_update_point = 400;
+                break;
+        }
+        b_generator.g_point = g_update_point;
+        buggenerator.goal_point.text = "目標 : "+ b_generator.g_point.ToString();
     }
 }
