@@ -38,7 +38,7 @@ public class bugcontroller : MonoBehaviour
     {
         if (normal)
         {
-            b_pos.x += Random.Range(0.01f, 0.05f);
+            b_pos.x -= Random.Range(0.01f, 0.05f);
             b_pos.y += Random.Range(-0.2f, 0.2f);
             DestroyBug();
             transform.position = b_pos;
@@ -63,7 +63,7 @@ public class bugcontroller : MonoBehaviour
 
     void DestroyBug()
     {
-        if (b_pos.x > 30)
+        if (b_pos.x < -10)
         {
             Destroy(this.gameObject);
         }
