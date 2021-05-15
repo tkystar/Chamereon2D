@@ -62,7 +62,7 @@ public class buggenerator : MonoBehaviour
                 // プレイヤーからx軸方向に10、y軸方向に1移動した位置に
                 // 敵を出現させる
                 Instantiate(enemyObj,
-                  new Vector3(-10,Random.Range(4,6),-9), transform.rotation);
+                  new Vector3(30,Random.Range(4,6),-9), transform.rotation);
                 // 最大出現数を減らす
                 //maxInstanceValue--;
                 // タイマーのリセット

@@ -5,6 +5,8 @@ using UnityEngine;
 public class headswipe : MonoBehaviour
 {
     private GameObject tongueroot;
+    public GameObject ArrowImage;
+    private MeshRenderer ArrowMesh;
 
     Vector2 sPos;   //タッチした座標
     Quaternion sRot;//タッチしたときの回転
@@ -22,6 +24,8 @@ public class headswipe : MonoBehaviour
         diag = Mathf.Sqrt(Mathf.Pow(wid, 2) + Mathf.Pow(hei, 2));
         sRot = tongueroot.transform.rotation;
         sRot.z = 0;
+        ArrowMesh = ArrowImage.GetComponent<MeshRenderer>();
+        ArrowMesh.enabled = false;
     }
 
     private void Update()
@@ -39,10 +43,12 @@ public class headswipe : MonoBehaviour
             if (t1.phase == TouchPhase.Began)
             {
                 sPos = t1.position;
+                ArrowMesh.enabled = true;
                 //sRot = tongueroot.transform.rotation;
             }
             else if (t1.phase == TouchPhase.Moved || t1.phase == TouchPhase.Stationary)
             {
+             
                 //tx = (t1.position.x - sPos.x) / wid; //横移動量(-1<tx<1)
                 ty = (t1.position.y - sPos.y) / hei; //縦移動量(-1<ty<1)
 
@@ -57,6 +63,7 @@ public class headswipe : MonoBehaviour
                 //tongueroot.transform.rotation = sRot;
                 //tongueroot.transform.Rotate(new Vector3(0, 0, 90 * ty), Space.Self);
             }
+            ArrowMesh.enabled = false;
         }
     }
 
@@ -66,6 +73,7 @@ public class headswipe : MonoBehaviour
         {
             sPos = Input.mousePosition;
             //sRot = tongueroot.transform.rotation;
+            ArrowMesh.enabled = true;
         }
         else if (Input.GetMouseButton(0))
         {
@@ -85,5 +93,6 @@ public class headswipe : MonoBehaviour
             
             
         }
+        ArrowMesh.enabled = false;
     }
 }
