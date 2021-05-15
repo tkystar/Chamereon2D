@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JustMove : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public GameObject Camereon;
     [SerializeField] private int Speed;   
     public Sprite left;
