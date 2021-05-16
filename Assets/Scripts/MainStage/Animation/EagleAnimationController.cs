@@ -25,7 +25,7 @@ public class EagleAnimationController : MonoBehaviour
     public GameObject camereon;
     private bool detectionTrigger;
     JustMove justmove;
-    int talkcounter=0;
+    string talkcounter;
     void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -35,6 +35,8 @@ public class EagleAnimationController : MonoBehaviour
         detectionTrigger = true;
         justmove = camereon.GetComponent<JustMove>();
         camereonanimator = camereon.GetComponent<Animator>();
+        talktrigger = false;
+        talkcounter = "first";
     }
     /*
     private void OnCollisionEnter2D(Collision2D collision)
@@ -64,6 +66,8 @@ public class EagleAnimationController : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
+
+
         if (time > span)
         {
             //int rand = Random.Range(0, 2);//移動する方向を決めます。]
@@ -106,13 +110,15 @@ public class EagleAnimationController : MonoBehaviour
         }
         
 
-        if(detectionTrigger)
-        {           
-            Vector2 dis = this.gameObject.transform.position - camereon.GetComponent<Transform>().position;          
 
-            if (dis.magnitude < 5)
+        if (detectionTrigger)
+        {           
+            Vector2 dis = this.gameObject.transform.position - camereon.GetComponent<Transform>().position;
+            
+            if (dis.magnitude < 10)
             {
                 talkstart();
+                Debug.Log("fff");
 
             }
         }
@@ -129,7 +135,18 @@ public class EagleAnimationController : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints2D.None;
         justmove.enabled = true;
         StartCoroutine("detectionTriggerOn");
-        talkcounter++;
+        talkcounter="firstfin";
+    }
+    void Negotiatefin()
+    {
+        talktrigger = false;
+        eagleanimator.SetBool("Stop", false);
+        rigidBody.constraints = RigidbodyConstraints2D.None;
+        justmove.enabled = true;
+        StartCoroutine("detectionTriggerOn");
+        talkcounter = "negotiatefin";
+
+
     }
 
     private void FixedUpdate()
@@ -144,13 +161,15 @@ public class EagleAnimationController : MonoBehaviour
 
         if (!talktrigger)
         {
-            if(clipInfo.clip.name == "EagleWalk"|| clipInfo.clip.name == "Backeagle")
+            if (clipInfo.clip.name == "EagleWalk" || clipInfo.clip.name == "Backeagle")
             {
-                rigidBody.position += input * SPEED;//NPCの移動  
-                Debug.Log(input);
+                
             }
-            
+            rigidBody.position += input * SPEED;//NPCの移動  
+            Debug.Log(input);
+
         }
+
     }
 
     private void talkstart()
@@ -159,14 +178,20 @@ public class EagleAnimationController : MonoBehaviour
         justmove.rb.velocity = new Vector2(0, 0);
         justmove.enabled = false;
         camereonanimator.SetInteger("camereonTransition", 7);
-        if (talkcounter == 0)
+        if (talkcounter == "first")
         {
             flowchart.ExecuteBlock("Eagle");
-        }else if(talkcounter==1)
+        }else if(talkcounter== "firstfin")
         {
             flowchart.ExecuteBlock("EagleTwice");
         }
-        
+        else if(talkcounter == "negotiatefin")
+        {
+            flowchart.ExecuteBlock("EagleComplete");
+
+        }
+
+
         Debug.Log("gd");
         eagleanimator.SetBool("Stop", true);
         talktrigger = true;
