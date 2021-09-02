@@ -820,6 +820,7 @@
     <Compile Include="Assets\bugcontroller.cs" />
     <Compile Include="Assets\buggenerator.cs" />
     <Compile Include="Assets\delayMethod.cs" />
+    <Compile Include="Assets\delete.cs" />
     <Compile Include="Assets\fpschecker.cs" />
     <Compile Include="Assets\guage.cs" />
     <Compile Include="Assets\headswipe.cs" />
