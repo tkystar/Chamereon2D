@@ -28,11 +28,10 @@ public class DaikuTalkController : MonoBehaviour
         {
             Vector2 dis = this.gameObject.transform.position - camereon.GetComponent<Transform>().position;
 
-            if (dis.magnitude < 10)
+            if (dis.magnitude < 5)
             {
-                //talkstart();
-                Debug.Log("fff");
-
+                talkstart();
+                
             }
         }
     }
@@ -46,14 +45,13 @@ public class DaikuTalkController : MonoBehaviour
         
         flowchart.ExecuteBlock("Daiku");
 
-        Debug.Log("gd");
-        
         talktrigger = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
         
     }
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         detectionTrigger = false;
@@ -69,7 +67,7 @@ public class DaikuTalkController : MonoBehaviour
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
 
-    }
+    }*/
     
 
     void talkfin()
@@ -77,7 +75,14 @@ public class DaikuTalkController : MonoBehaviour
         talktrigger = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;
         justmove.enabled = true;
-        StartCoroutine("detectionTriggerOn");
+       StartCoroutine("detectionTriggerOn");
         talkcounter = "firstfin";
+    }
+
+    private IEnumerator detectionTriggerOn()
+    {
+        yield return new WaitForSeconds(4.0f);
+
+        detectionTrigger = true;
     }
 }

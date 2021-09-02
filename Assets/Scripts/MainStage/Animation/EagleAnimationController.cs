@@ -153,12 +153,11 @@ public class EagleAnimationController : MonoBehaviour
     {
         if (input == Vector2.zero)
         {
-            Debug.Log("u");
+            
             return;
         }
 
-        Debug.Log("AnimationClip名 : " + clipInfo.clip.name);
-
+        
         if (!talktrigger)
         {
             if (clipInfo.clip.name == "EagleWalk" || clipInfo.clip.name == "Backeagle")
@@ -166,7 +165,7 @@ public class EagleAnimationController : MonoBehaviour
                 
             }
             rigidBody.position += input * SPEED;//NPCの移動  
-            Debug.Log(input);
+            
 
         }
 

@@ -22,8 +22,9 @@ namespace Pathfinding {
         Vector3 LUpos;
         Vector3 LDpos;
         //public Color CatchColor;
-        Color32 GREEN= new Color32(146,224,76,255);
-        Color32 YELLOW = new Color32(253, 227, 83, 255);
+
+        [SerializeField] Color32 GREEN;   ///= new Color32(146,224,76,255);
+        [SerializeField] Color32 YELLOW; ///= new Color32(253, 227, 83, 255);
         Rigidbody2D rb;
         public Color32 TransitionColor;
         public Color32 startColor;

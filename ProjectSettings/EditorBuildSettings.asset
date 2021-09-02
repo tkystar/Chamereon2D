@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Chamereon/MiniGame/Test/NvigationTileMap.unity
+    path: Assets/Scenes/Chamereon/MiniGame/Test/FightWolf.unity
     guid: 6c7a3091ea3e34c439de3f716c314a37
   - enabled: 1
     path: Assets/Scenes/Chamereon/MiniGame/BugCatchGame.unity

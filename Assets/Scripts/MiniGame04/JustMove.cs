@@ -15,6 +15,9 @@ public class JustMove : MonoBehaviour
     BoxCollider2D collider;
     Vector3 playertransform;
     Animator animator;
+    float colliderbox_x;
+    float colliderbox_y;
+    public bool movinpermission;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +25,21 @@ public class JustMove : MonoBehaviour
         collider = this.gameObject.GetComponent<BoxCollider2D>();
         playertransform=player.GetComponent<Transform>().transform.localScale;
         animator = this.GetComponent<Animator>();
+        colliderbox_x=this.GetComponent<BoxCollider2D>().size.x;
+        colliderbox_y= this.GetComponent<BoxCollider2D>().size.y;
+        movinpermission = true;
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if(movinpermission)
+        {
+            Move();
+        }
+    }
+
+    void Move()
     {
         if (Input.GetKey("left"))
         {
@@ -92,40 +106,36 @@ public class JustMove : MonoBehaviour
             //hoge.sizeDelta = new Vector2(y1, x1);
         }
 
-        /*
+
         if (Input.GetKeyDown("left"))
         {
 
-            player.GetComponent<SpriteRenderer>().sprite = left;
-            player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(6, 3);
+            //player.GetComponent<SpriteRenderer>().sprite = left;
+            //player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
+            collider.size = new Vector2(colliderbox_y, colliderbox_x);
 
         }
         else if (Input.GetKeyDown("right"))
         {
 
-            player.GetComponent<SpriteRenderer>().sprite = left;
-            player.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,1);
-            collider.size = new Vector2(6, 3);
+            //player.GetComponent<SpriteRenderer>().sprite = left;
+            //player.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,1);
+            collider.size = new Vector2(colliderbox_y, colliderbox_x);
         }
         else if (Input.GetKeyDown("up"))
         {
 
-            player.GetComponent<SpriteRenderer>().sprite = up;
-            player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(3, 6);
+            // player.GetComponent<SpriteRenderer>().sprite = up;
+            // player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
+            collider.size = new Vector2(colliderbox_x, colliderbox_y);
         }
         else if (Input.GetKeyDown("down"))
         {
 
-            player.GetComponent<SpriteRenderer>().sprite = down;
-            player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(3, 6);
+            //player.GetComponent<SpriteRenderer>().sprite = down;
+            //player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
+            collider.size = new Vector2(colliderbox_x, colliderbox_y);
         }
-        */
-
-
-
     }
 }
 
