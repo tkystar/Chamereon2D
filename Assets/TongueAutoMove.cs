@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class TongueAutoMove : MonoBehaviour
 {
-    private Vector3 xn;
+    private Vector3 xn;//舌の位置
+    private Vector3 l_xn;//LockOnRootの位置
     private bool push;
+    public static bool drag_switch;//dragの開始位置が特定の範囲のときtrueになる
     private int g_update_point;//目標達成後の次の目標値
     public static int dificulty;//ゲームの難易度
     public GameObject Tonguehead;
     public GameObject BugGenerator;
     public GameObject headimage;//カメレオン頭の画像
+    public GameObject DragRabge;
+    public Transform LockOnRoot;//照準オブジェクト（lockon）の親オブジェクト
+    private SpriteRenderer lockonrend;//照準オブジェクト（lockon）のSpriteRenderer
   
     [Header("舌のスピード")]
     public float speed;//舌のスピード
@@ -26,7 +31,9 @@ public class TongueAutoMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       
+        lockonrend = LockOnRoot.Find("lockon").GetComponent<SpriteRenderer>();
+        lockonrend.material.color = new Color32(255, 255, 255, 0);
         xn = transform.localPosition;//ローカル座標の取得
         xn.x = -7.5f;
         transform.localPosition = xn;
@@ -38,23 +45,50 @@ public class TongueAutoMove : MonoBehaviour
         b_generator = BugGenerator.GetComponent<buggenerator>();
         dificulty = 1;
         g_update_point = 100;
-        maxdistance = 30.0f;
+        maxdistance = 7.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine("AfterPushDown");
+        //StartCoroutine("AfterPushDown");
         ScreenTouch_TongueMove();
         MouseTouch_TongueMove();
-        StartCoroutine("TongueAction");
-        if (b_generator.g_point< buggenerator.b_sum)
+        //StartCoroutine("TongueAction");
+        if (push)
         {
-            //dificulty += 1; 
-            SpeedUp();
+            //yield return new WaitForSeconds(0.25f);
+            lockonrend.material.color = new Color32(255, 255, 255, 0);
+            xn.x += speed;
+            transform.localPosition = xn;
+            if (xn.x >= maxtonguelength)
+            {
+                push = false;
+                drag_switch = false;
+            }
         }
-                       
+        if (!push)
+        {
+            animator.SetBool("open", false);
+            xn.x -= speed;
+            if (xn.x < -7.5f)
+            {
+                xn.x = -7.5f;
+                tongue_collider.enabled = false;
+                transform.localPosition = xn;
+                animator.SetBool("close", true);
+                //animator.SetBool("close", false);
+            }
+            transform.localPosition = xn;
+        }
+        if (b_generator.g_point < buggenerator.b_sum)
+        {
+
+            //SpeedUo();
+        }
+        if (b_generator.countTime < 0) tongue_collider.enabled = false;//制限時間を超えたら舌のコライダーを無効にする
     }
+
 
     public void PushDown()//ボタン押下直後
     {
@@ -69,7 +103,7 @@ public class TongueAutoMove : MonoBehaviour
         animator.SetBool("open", false);
     }
 
-    public IEnumerator AfterPushDown()//ボタン操作における舌の移動処理
+    /*public IEnumerator AfterPushDown()//ボタン操作における舌の移動処理
     {
         if (push)
         {
@@ -93,9 +127,36 @@ public class TongueAutoMove : MonoBehaviour
         }
         transform.localPosition = xn;
         yield break;
-    }
+    }*/
 
-    public IEnumerator TongueAction()
+    /*public IEnumerator TongueAction()
+    {
+        if (push)
+        {
+            //yield return new WaitForSeconds(0.25f);
+            lockonrend.material.color = new Color32(255, 255, 255, 0);
+            xn.x += speed;
+            transform.localPosition = xn;
+            if (xn.x >= maxtonguelength) push = false;
+        }
+        if (!push)
+        {
+            animator.SetBool("open", false);
+            xn.x -= speed;
+            if (xn.x < -7.5f)
+            {
+                xn.x = -7.5f;
+                tongue_collider.enabled = false;
+                animator.SetBool("close", true);
+                transform.localPosition = xn;
+                //animator.SetBool("close", false);
+            }
+            transform.localPosition = xn;
+        }    
+        yield break;
+    }*/
+    /*
+     public IEnumerator TongueAction()//AfterpushDownと併用
     {
         if (push)
         {
@@ -103,7 +164,7 @@ public class TongueAutoMove : MonoBehaviour
             xn.x += speed;
             
         }
-        if (xn.x > maxtonguelength)
+        if (xn.x >= maxtonguelength)
         {
             push = false;
             animator.SetBool("open", false);
@@ -121,62 +182,82 @@ public class TongueAutoMove : MonoBehaviour
 
 
     }
-
+     */
+    public void DragSwitch()
+    {
+        if(b_generator.countTime >0) drag_switch = true;
+        if (b_generator.countTime < 0) drag_switch = false;//時間が過ぎたらドラッグできないようにする
+    }
     void ScreenTouch_TongueMove()
     {
-        if(Input.touchCount >0)
+        if(Input.touchCount >0 && drag_switch)
         {
             Touch t1 = Input.touches[0];
             if(t1.phase == TouchPhase.Began)
             {
-                baseposition = t1.position;
-                
+                baseposition = Camera.main.ScreenToWorldPoint(t1.position);
+                LockOnRoot.localPosition = new Vector3(-7.5f, 0, 0);
+                lockonrend.material.color = new Color32(255, 255, 255, 255);
             }
             if(t1.phase == TouchPhase.Moved)
             {
-                currentposition = t1.position;
+                currentposition = Camera.main.ScreenToWorldPoint(t1.position);
+                distance = Vector2.Distance(baseposition, currentposition);
+                if (distance > maxdistance) distance = maxdistance;
+                l_xn.x = (distance / maxdistance * 15.5f) - 7.5f;
+                LockOnRoot.localPosition = l_xn;
             }
             if (t1.phase == TouchPhase.Ended)
             {
-               
+                animator.SetBool("open", true);
+                lockonrend.material.color = new Color32(255, 255, 255, 0);
                 distance = Vector2.Distance(baseposition,currentposition);
                 if (distance > maxdistance) distance = maxdistance;
-                animator.SetBool("open", true);
-                animator.SetBool("close", false);
                 maxtonguelength = (distance / maxdistance * 15.5f)-7.5f;
                 push = true;
                 tongue_collider.enabled = true;
+               
             }
         }
     }
 
      void MouseTouch_TongueMove()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (drag_switch)
         {
-            baseposition = Input.mousePosition;
-           
-        }
-        if (Input.GetMouseButton(0))
-        {
-            currentposition = Input.mousePosition;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-           
-            distance = Vector2.Distance(baseposition, currentposition);
-            if (distance > maxdistance) distance = maxdistance;
-            animator.SetBool("open", true);
-            animator.SetBool("close", false);
-            maxtonguelength = (distance / maxdistance * 15.5f) - 7.5f;
-            push = true;
-            tongue_collider.enabled = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                baseposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Debug.Log(baseposition);
+                LockOnRoot.localPosition = new Vector3(-7.5f, 0, 0);
+                lockonrend.material.color = new Color32(255, 255, 255, 255);
+            }
+            if (Input.GetMouseButton(0))
+            {
+                currentposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                distance = Vector2.Distance(baseposition, currentposition);
+                if (distance > maxdistance) distance = maxdistance;
+                l_xn.x = (distance / maxdistance * 15.5f) - 7.5f;
+                LockOnRoot.localPosition = l_xn;
+
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                animator.SetBool("open", true);
+                distance = Vector2.Distance(baseposition, currentposition);
+                if (distance > maxdistance) distance = maxdistance;
+                maxtonguelength = (distance / maxdistance * 15.5f) - 7.5f;
+                push = true;
+                tongue_collider.enabled = true;
+               
+            }
         }
     }
 
     void SpeedUp()//舌のスピードアップ＆目標値変更
     {
-        speed += 0.1f;
+        dificulty += 1;
+        speed += 0.03f;
 
         switch (dificulty)
         {

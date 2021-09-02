@@ -25,7 +25,7 @@ public class headswipe : MonoBehaviour
         sRot = tongueroot.transform.rotation;
         sRot.z = 0;
         ArrowMesh = ArrowImage.GetComponent<MeshRenderer>();
-        ArrowMesh.enabled = false;
+        ArrowMesh.material.color = new Color32(255, 255, 255, 0);
     }
 
     private void Update()
@@ -42,19 +42,17 @@ public class headswipe : MonoBehaviour
             Touch t1 = Input.GetTouch(0);
             if (t1.phase == TouchPhase.Began)
             {
-                sPos = t1.position;
-                ArrowMesh.enabled = true;
+                //sPos = t1.position;
+                //ArrowMesh.enabled = true;
                 //sRot = tongueroot.transform.rotation;
             }
             else if (t1.phase == TouchPhase.Moved || t1.phase == TouchPhase.Stationary)
             {
-             
-                //tx = (t1.position.x - sPos.x) / wid; //横移動量(-1<tx<1)
-                ty = (t1.position.y - sPos.y) / hei; //縦移動量(-1<ty<1)
-
-                float rotateZ = (transform.eulerAngles.z > 180) ? transform.eulerAngles.z - 360 : transform.eulerAngles.z;
+                Vector2 touchworldposition = Camera.main.ScreenToWorldPoint(t1.position);//マウス座標をワールド座標に変換
+                float degree_z = GetAngle(this.transform.position, touchworldposition) + 180;//2点間の角度の計算
+                degree_z = (degree_z> 180) ? degree_z - 360 : degree_z;
                 // 現在の回転角度に入力(turn)を加味した回転角度をMathf.Clamp()を使いminAngleからMaxAngle内に収まるようにする
-                float angleZ = Mathf.Clamp(rotateZ + ty, minAngle, maxAngle);
+                float angleZ = Mathf.Clamp(degree_z, minAngle, maxAngle);
                 // 回転角度を-180～180から0～360に変換
                 angleZ = (angleZ < 0) ? angleZ + 360 : angleZ;
                 // 回転角度をオブジェクトに適用
@@ -63,7 +61,7 @@ public class headswipe : MonoBehaviour
                 //tongueroot.transform.rotation = sRot;
                 //tongueroot.transform.Rotate(new Vector3(0, 0, 90 * ty), Space.Self);
             }
-            ArrowMesh.enabled = false;
+            //ArrowMesh.enabled = false;
         }
     }
 
@@ -71,28 +69,40 @@ public class headswipe : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            sPos = Input.mousePosition;
+            /*sPos = Input.mousePosition;
             //sRot = tongueroot.transform.rotation;
-            ArrowMesh.enabled = true;
+            ArrowMesh.enabled = true;*/
+            ArrowMesh.material.color = new Color32(255, 255, 255, 255);
         }
         else if (Input.GetMouseButton(0))
         {
-            ty = (Input.mousePosition.y - sPos.y) / hei;
-
-            float rotateZ = (transform.eulerAngles.z > 180) ? transform.eulerAngles.z - 360 : transform.eulerAngles.z;
+            Vector2 touchworldposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);//マウス座標をワールド座標に変換
+            float degree_z = GetAngle(this.transform.position,touchworldposition) + 180;
+            degree_z = (degree_z> 180) ? degree_z - 360 : degree_z;
             // 現在の回転角度に入力(turn)を加味した回転角度をMathf.Clamp()を使いminAngleからMaxAngle内に収まるようにする
-            float angleZ = Mathf.Clamp(rotateZ + ty, minAngle, maxAngle);
+            float angleZ = Mathf.Clamp(degree_z , minAngle, maxAngle);
             // 回転角度を-180～180から0～360に変換
             angleZ = (angleZ < 0) ? angleZ + 360 : angleZ;
             // 回転角度をオブジェクトに適用
             transform.rotation = Quaternion.Euler(0, 0, angleZ);
+            //float rotateZ = (transform.eulerAngles.z > 180) ? transform.eulerAngles.z - 360 : transform.eulerAngles.z;
+            //float angleZ = Mathf.Clamp(rotateZ + ty, minAngle, maxAngle);
+            //angleZ = (angleZ < 0) ? angleZ + 360 : angleZ;
+            //transform.rotation = Quaternion.Euler(0, 0, angleZ);
+            // tongueroot.transform.rotation = sRot;
+            //tongueroot.transform.Rotate(new Vector3(0, 0, -90 * ty), Space.Self);
 
-           // tongueroot.transform.rotation = sRot;
-           //tongueroot.transform.Rotate(new Vector3(0, 0, -90 * ty), Space.Self);
-            
-            
-            
         }
-        ArrowMesh.enabled = false;
+        //ArrowMesh.enabled = false;
+        ArrowMesh.material.color = new Color32(255, 255, 255, 0);
+    }
+
+    float GetAngle(Vector2 start,Vector2 target)//2点間の角度を求める
+    {
+        Vector2 dt = target - start;
+        float rad = Mathf.Atan2(dt.y, dt.x);
+        float degree = rad * Mathf.Rad2Deg;
+        //Debug.Log(degree);
+        return degree;
     }
 }

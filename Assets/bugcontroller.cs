@@ -8,7 +8,7 @@ public class bugcontroller : MonoBehaviour
     private GameObject _child;
 
     private Vector3 b_pos;
-
+    private float move_speed;
     //private Vector3 b_w_scal;
     //private Vector3 b_l_scal;
    // private Vector3 p_scal;
@@ -27,7 +27,7 @@ public class bugcontroller : MonoBehaviour
     {
         normal = true;
         b_pos = this.transform.position;
-        
+        move_speed = 10f;
         //RootObject = GameObject.Find("tongue");
         //_child = RootObject.transform.Find("tonguehead").gameObject;
         //p_scal = RootObject.transform.lossyScale;
@@ -38,10 +38,12 @@ public class bugcontroller : MonoBehaviour
     {
         if (normal)
         {
-            b_pos.x -= Random.Range(0.01f, 0.05f);
-            b_pos.y += Random.Range(-0.2f, 0.2f);
+            b_pos.x -= move_speed*Time.deltaTime ;
+            b_pos.y += Random.Range(-0.2f , 0.2f ) ;
+            if (b_pos.y > 9.0f) b_pos.y -= 0.2f;
+            else if (b_pos.y < -1.0f) b_pos.y += 0.2f;
             DestroyBug();
-            transform.position = b_pos;
+            transform.position = b_pos ;
         }
 
         /*if (catch_switch)
