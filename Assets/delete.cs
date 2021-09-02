@@ -8,6 +8,7 @@ public class delete : MonoBehaviour
     void Start()
     {
         ///test
+        ///小川も変えました
     }
 
     // Update is called once per frame
