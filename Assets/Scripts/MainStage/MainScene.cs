@@ -22,7 +22,7 @@ namespace Western
             void Start()
             {
                 //シーンが破棄されたときに呼び出されるようにする
-                SceneManager.sceneUnloaded += OnSceneUnloaded;
+                //SceneManager.sceneUnloaded += OnSceneUnloaded;
 
                 scene = SceneManager.GetSceneByName("BugCatchGame");
             }
@@ -43,7 +43,7 @@ namespace Western
                 //Application.LoadLevelAdditive("BugCatchGame");
 
             }
-
+        /*
             private void OnSceneUnloaded(Scene current)
             {
                 //シーンが破棄されたときに呼び出される
@@ -70,6 +70,12 @@ namespace Western
                     flowchart.SetBooleanVariable("Score", false);
                     Debug.Log(SceneFin.Score);
                 }
+            }
+            */
+
+            void fightwolfScene()
+            {
+                SceneManager.LoadScene("FightWolf");
             }
 
             

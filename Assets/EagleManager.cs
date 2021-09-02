@@ -36,6 +36,6 @@ public class EagleManager : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
     }*/
-
+    ///thisline deleteok
     
 }
