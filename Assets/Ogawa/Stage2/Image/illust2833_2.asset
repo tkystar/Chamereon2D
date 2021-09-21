@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: toriaezu
+  m_Name: illust2833_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: cf7e02e0f81e7f2469ffc2b55599aaae, type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Sprite: {fileID: -3647300280466217788, guid: cec602219bc9d1446999555d0f649861,
+    type: 3}
+  m_Color: {r: 0.7610733, g: 0.9056604, b: 0.74759704, a: 1}
   m_Transform:
     e00: 1
     e01: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: toriaezu
+  m_Name: "\u5730\u97622-2"
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: cf7e02e0f81e7f2469ffc2b55599aaae, type: 3}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0c5d4fda83d103a49b8d65245f1ed7ca, type: 3}
+  m_Color: {r: 0.5315949, g: 0.6226415, b: 0.5838128, a: 1}
   m_Transform:
     e00: 1
     e01: 0
