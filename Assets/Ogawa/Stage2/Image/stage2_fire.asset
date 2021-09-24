@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Bush
+  m_Name: stage2_fire
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 499874e8d0dc22d439a4a5c26e851e12, type: 3}
-  m_Color: {r: 0.9254902, g: 0.9254902, b: 0.9254902, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 836e93e8007b5e1408edbdd8ac3c4bc9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
