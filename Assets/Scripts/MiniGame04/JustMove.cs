@@ -6,7 +6,7 @@ public class JustMove : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject Camereon;
-    [SerializeField] private int Speed;   
+    [SerializeField] public int Speed;   
     public Sprite left;
     public Sprite right;
     public Sprite up;
@@ -14,10 +14,11 @@ public class JustMove : MonoBehaviour
     public GameObject player;
     BoxCollider2D collider;
     Vector3 playertransform;
-    Animator animator;
+    public Animator animator;
     float colliderbox_x;
     float colliderbox_y;
     public bool movinpermission;
+    public SpriteRenderer _renderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class JustMove : MonoBehaviour
         colliderbox_x=this.GetComponent<BoxCollider2D>().size.x;
         colliderbox_y= this.GetComponent<BoxCollider2D>().size.y;
         movinpermission = true;
+        _renderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class JustMove : MonoBehaviour
         {
             rb.velocity = new Vector2(-Speed, 0);
             animator.SetInteger("camereonTransition", 2);
-
+            _renderer.sprite = left;
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
@@ -53,7 +55,7 @@ public class JustMove : MonoBehaviour
         {
             rb.velocity = new Vector2(Speed, 0);
             animator.SetInteger("camereonTransition", 3);
-
+            _renderer.sprite = right;
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
@@ -61,7 +63,7 @@ public class JustMove : MonoBehaviour
         {
             rb.velocity = new Vector2(0, Speed);
             animator.SetInteger("camereonTransition", 0);
-
+            _renderer.sprite = up;
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
@@ -69,6 +71,7 @@ public class JustMove : MonoBehaviour
         {
             rb.velocity = new Vector2(0, -Speed);
             animator.SetInteger("camereonTransition", 1);
+            _renderer.sprite = down;
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
@@ -103,6 +106,7 @@ public class JustMove : MonoBehaviour
         {
             rb.velocity = new Vector2(0, 0);
             animator.SetInteger("camereonTransition", 5);
+
             //hoge.sizeDelta = new Vector2(y1, x1);
         }
 

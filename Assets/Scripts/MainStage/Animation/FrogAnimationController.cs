@@ -40,8 +40,7 @@ public class FrogAnimationController : MonoBehaviour
 
                 if (n % 4 == 0)     ///forward
                 {
-                    animator.SetInteger("direction", 0);
-                    Debug.Log("00");
+                    animator.SetInteger("direction", 0);        
                     input = new Vector2(0, -1.0f);
                     StartCoroutine("backtransition");
 
@@ -49,21 +48,18 @@ public class FrogAnimationController : MonoBehaviour
                 else if (n % 4 == 1)     ///left
                 {
                     animator.SetInteger("direction", 1);
-                    Debug.Log("22");
                     input = new Vector2(-1.0f, 0);
                     StartCoroutine("backtransition");
                 }
                 else if (n % 4 == 2)      ///back
                 {
                     animator.SetInteger("direction", 2);
-                    Debug.Log("11");
                     input = new Vector2(0, 1.0f);
                     StartCoroutine("backtransition");
                 }
                 else if (n % 4 == 3)      ///right
                 {
                     animator.SetInteger("direction", 3);
-                    Debug.Log("33");
                     input = new Vector2(1.0f, 0);
                     StartCoroutine("backtransition");
                 }

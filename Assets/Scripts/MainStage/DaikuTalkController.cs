@@ -9,9 +9,10 @@ public class DaikuTalkController : MonoBehaviour
     public GameObject camereon;
     JustMove justmove;
     Animator camereonanimator;
-    string talkcounter;
+    public string talkcounter;
     Rigidbody2D rigidBody;
     bool talktrigger;
+    private Vector2 dis;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +27,20 @@ public class DaikuTalkController : MonoBehaviour
     {
         if (detectionTrigger)
         {
-            Vector2 dis = this.gameObject.transform.position - camereon.GetComponent<Transform>().position;
+            dis = this.gameObject.transform.position - camereon.GetComponent<Transform>().position;
 
             if (dis.magnitude < 5)
             {
                 talkstart();
                 
+            }
+        }
+        else
+        {
+            if (dis.magnitude > 8)
+            {
+                detectionTrigger = true;
+
             }
         }
     }
@@ -83,6 +92,6 @@ public class DaikuTalkController : MonoBehaviour
     {
         yield return new WaitForSeconds(4.0f);
 
-        detectionTrigger = true;
+       
     }
 }

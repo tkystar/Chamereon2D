@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - heart
+  - time
+  - Laser
+  - star
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 868819083
+    locked: 0
+  - name: chamereon
+    uniqueID: 2528611411
+    locked: 0
+  - name: building
+    uniqueID: 3476447371
+    locked: 0
+  - name: character
+    uniqueID: 3863402501
+    locked: 0
+  - name: mostforward
+    uniqueID: 832519345
+    locked: 0
