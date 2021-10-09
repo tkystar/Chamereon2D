@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class buggenerator : MonoBehaviour
 {
     // Start is called before the first frame update

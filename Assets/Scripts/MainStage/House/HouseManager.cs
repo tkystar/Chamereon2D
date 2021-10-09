@@ -1,7 +1,13 @@
-﻿using System.Collections;
+﻿#if !UNITY_2019_3_OR_NEWER
+#define CINEMACHINE_PHYSICS_2D
+#endif
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine.Utility;
+using Cinemachine;
 
 namespace Western
 {
@@ -22,15 +28,16 @@ namespace Western
 
         public float alpha = 0.0f;//透過率、これを変化させる
         public float fadeSpeed = 0.2f;//フェードに掛かる時間
-
+        private GameObject _cam;
         public GameObject blackWall;
-
+        
         HouseManager _houseManager;
         JustMove _justMove;
 
         public bool up = false;
         public bool down = false;
         public float dist;
+        public CinemachineConfiner2D _cinemachineConfiner2D;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,6 +46,7 @@ namespace Western
             _stay = false;
             this.GetComponent<BoxCollider2D>().enabled = true;
             _justMove = GameObject.Find("Camereon").GetComponent<JustMove>();
+            _cinemachineConfiner2D=GameObject.Find("CM vcam2").GetComponent<CinemachineConfiner2D>();
         }
 
         // Update is called once per frame
@@ -138,6 +146,7 @@ namespace Western
 
         public IEnumerator EnterHouse()
         {
+            _cinemachineConfiner2D.enabled=false;
             up = true;
             yield return new WaitForSeconds(0.5f);
             fadeOut();

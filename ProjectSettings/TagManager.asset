@@ -4,12 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - heart
-  - time
-  - Laser
-  - star
-  - Enemy
+  - Pipe
+  - Glass
+  - Wood_M
+  - Wood_B
+  - Nail
+  - String
+  - StringB
+  - Bottom2
+  - Bottom
   layers:
   - Default
   - TransparentFX
@@ -47,18 +50,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: ground
-    uniqueID: 868819083
+  - name: Ground
+    uniqueID: 783895075
     locked: 0
-  - name: chamereon
-    uniqueID: 2528611411
+  - name: Item
+    uniqueID: 3039558755
     locked: 0
-  - name: building
-    uniqueID: 3476447371
+  - name: Charater
+    uniqueID: 1487688241
     locked: 0
-  - name: character
-    uniqueID: 3863402501
+  - name: Chamereon
+    uniqueID: 1324446701
     locked: 0
-  - name: mostforward
-    uniqueID: 832519345
+  - name: MostForward
+    uniqueID: 2536715375
     locked: 0

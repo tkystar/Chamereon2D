@@ -62,6 +62,7 @@ namespace Western
             _houseManager.fadeIn();
             _stay = false;
             chamereon.transform.position = _backPos;
+            _houseManager._cinemachineConfiner2D.enabled=true;
             spawnPosObj.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(_houseManager.BackEnterHousePoslater());
             yield return new WaitForSeconds(1.0f);

@@ -13,6 +13,7 @@ public class DaikuTalkController : MonoBehaviour
     Rigidbody2D rigidBody;
     bool talktrigger;
     private Vector2 dis;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class DaikuTalkController : MonoBehaviour
         camereonanimator = camereon.GetComponent<Animator>();
         rigidBody = this.GetComponent<Rigidbody2D>();
         detectionTrigger = true;
+        
     }
 
     // Update is called once per frame
@@ -94,4 +96,6 @@ public class DaikuTalkController : MonoBehaviour
 
        
     }
+
+    
 }

@@ -197,7 +197,6 @@ namespace Fungus
             if (portraits != null && portraits.Count > 1)
             {
                 portraits.Sort(PortraitUtil.PortraitCompareTo);
-
             }
         }
     }

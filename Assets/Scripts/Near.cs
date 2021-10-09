@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using Cinemachine.Utility;
 
 namespace Cinemachine
@@ -9,6 +9,7 @@ namespace Cinemachine
     public class Near : MonoBehaviour
     {
         public Fungus.Flowchart flowchart;
+
 
         public GameObject Player;
         Transform Target;
@@ -21,6 +22,7 @@ namespace Cinemachine
         void Start()
         {
             Target = Player.transform;
+
 
         }
 
