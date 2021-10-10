@@ -5,7 +5,7 @@ using UnityEngine;
 public class DaikuTalkController : MonoBehaviour
 {
     public Fungus.Flowchart flowchart;
-    bool detectionTrigger;
+    public bool detectionTrigger;
     public GameObject camereon;
     JustMove justmove;
     Animator camereonanimator;
@@ -13,7 +13,6 @@ public class DaikuTalkController : MonoBehaviour
     Rigidbody2D rigidBody;
     bool talktrigger;
     private Vector2 dis;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -37,18 +36,12 @@ public class DaikuTalkController : MonoBehaviour
                 
             }
         }
-        else
-        {
-            if (dis.magnitude > 8)
-            {
-                detectionTrigger = true;
-
-            }
-        }
+        
     }
 
     void talkstart()
     {
+        
         detectionTrigger = false;
         justmove.rb.velocity = new Vector2(0, 0);
         justmove.enabled = false;
@@ -59,7 +52,7 @@ public class DaikuTalkController : MonoBehaviour
         talktrigger = true;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
-
+        flowchart.SetBooleanVariable("DaikuTalkPossibility", false);
         
     }
     /*
@@ -81,8 +74,9 @@ public class DaikuTalkController : MonoBehaviour
     }*/
     
 
-    void talkfin()
+    private void talkfin()
     {
+        
         talktrigger = false;
         rigidBody.constraints = RigidbodyConstraints2D.None;
         justmove.enabled = true;
@@ -92,9 +86,17 @@ public class DaikuTalkController : MonoBehaviour
 
     private IEnumerator detectionTriggerOn()
     {
-        yield return new WaitForSeconds(4.0f);
-
+        yield return new WaitForSeconds(3.0f);
+        flowchart.SetBooleanVariable("DaikuTalkPossibility", true);
+        detectionTrigger=true;
        
+    }
+
+    void MovetoBridge()
+    {
+        //家を出て橋に歩いていくアニメーション
+        this.gameObject.transform.position=new Vector3(201,13,0);
+        GameObject.Find("Eagle").SetActive(false);
     }
 
     

@@ -13,6 +13,7 @@ TagManager:
   - StringB
   - Bottom2
   - Bottom
+  - Set
   layers:
   - Default
   - TransparentFX
