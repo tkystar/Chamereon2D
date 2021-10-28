@@ -1,65 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MoguraScripts : MonoBehaviour
 {
     Animator animator;
     Rigidbody2D rb;
-    public GameObject Player;
-    bool C = false;
+
+    public GameObject m1;
+    public GameObject m2;
+    public GameObject m3;
+
+    Vector3 Trans;
+    DateTime presentTime;
+    public float span = 0.5f;
+    private float currentTime = 0f;
+    private float nowTime = 0f;
+    bool FirstTime = false;
+
+    List<Vector3> poslist = new List<Vector3>();
+    List<GameObject> pllist = new List<GameObject>(); // プレイヤーのリスト
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        animator = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
+        pllist.Add(m1);
+        pllist.Add(m2);
+        pllist.Add(m3);
     }
 
     // Update is called once per frame
+
     void Update()
     {
-        if (C == true)
+        if (Input.GetKey("left"))
         {
-            if (this.transform.position.x > Player.transform.position.x + 5f)
+            // pos に先頭キャラが移動したい場所
+            poslist.Insert(0, this.transform.position);
+            // 必要のない座標を削除
+            while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 10);
+            // それぞれのプレイヤーを目標位置に移動
+            for (int i = 0; i < poslist.Count; i++)
             {
-                First1();
-            }
-            if (this.transform.position.x < Player.transform.position.x + 5f && this.transform.position.y > Player.transform.position.y + 5f)
-            {
-                First2();
+                for (int j = 0; j < poslist.Count * 10; j = j + 10)
+                {
+                    pllist[i].transform.position = poslist[j];
+                }
             }
         }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        if (Input.GetKey("right"))
         {
-            C = true;
+            // pos に先頭キャラが移動したい場所
+            poslist.Insert(0, this.transform.position);
+            // 必要のない座標を削除
+            while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 10);
+            // それぞれのプレイヤーを目標位置に移動
+            for (int i = 0; i < poslist.Count; i++)
+            {
+                for (int j = 0; j < poslist.Count * 10; j = j + 10)
+                {
+                    pllist[i].transform.position = poslist[j];
+                }
+            }
         }
-    }
-
-    public void Stop()
-    {
-        rb.velocity = Vector3.zero;
-        animator.SetFloat("Forward", 0);
-        animator.SetFloat("Turn", 0);
-        animator.SetBool("Crouch", false);
-    }
-
-    public void First1()
-    {
-        
-            rb.velocity = new Vector2(-15f, 0);
-            animator.SetInteger("camereonTransition", 6);
-    }
-
-    public void First2()
-    {
-        
-            rb.velocity = new Vector2(0, -15f);
-            animator.SetInteger("camereonTransition", 5);
-    
     }
 }

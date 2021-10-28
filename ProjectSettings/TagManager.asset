@@ -14,6 +14,12 @@ TagManager:
   - Bottom2
   - Bottom
   - Set
+  - RedPin
+  - GreenPin
+  - BluePin
+  - PinkPin
+  - YellowPin
+  - SkyPin
   layers:
   - Default
   - TransparentFX
