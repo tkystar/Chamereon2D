@@ -40,5 +40,6 @@ public class TreatmentManager : MonoBehaviour
         treatmentCanvas.SetActive(false);
         generalCanvas.SetActive(true);
         _daikuTalkController.detectionTrigger=true;
+        
     }
 }
