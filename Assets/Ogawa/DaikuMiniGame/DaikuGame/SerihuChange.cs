@@ -25,6 +25,8 @@ public class SerihuChange : MonoBehaviour
 
     public bool Yotu = false;
     public bool Katakori = false;
+    public bool Hiesyou = false;
+    public bool Warai = false;
 
     public int PinCount = 0;
     bool Check = true;
@@ -101,7 +103,6 @@ public class SerihuChange : MonoBehaviour
                 SayText.text = "ようつうはもうダイジョウブじゃ";
             }
             Yotu = true;
-
         }
         else if (
             //かたこり
@@ -135,6 +136,37 @@ public class SerihuChange : MonoBehaviour
             Katakori = true;
         }
         else if (
+            //かたこり
+            PinR.transform.position.x > -16.5f && PinR.transform.position.x < -12.5f &&
+            PinR.transform.position.y > 2 / 3f && PinR.transform.position.y < 4f &&
+
+            PinP.transform.position.x > -16.5f && PinP.transform.position.x < -12.5f &&
+            PinP.transform.position.y > -6f && PinP.transform.position.y < -8 / 3f &&
+
+            PinG.transform.position.x > -12.5f && PinG.transform.position.x < -8.5f &&
+            PinG.transform.position.y > -6f && PinG.transform.position.y < -8 / 3f &&
+
+            PinY.transform.position.x > -12.5f && PinY.transform.position.x < -8.5f &&
+            PinY.transform.position.y > -6f && PinY.transform.position.y < -8 / 3f &&
+
+            PinB.transform.position.x > -8.5f && PinB.transform.position.x < -4.5f &&
+            PinB.transform.position.y > 2 / 3f && PinB.transform.position.y < 4f &&
+
+            PinS.transform.position.x > -8.5f && PinS.transform.position.x < -4.5f &&
+            PinS.transform.position.y > -6f && PinS.transform.position.y < -8 / 3f
+            )
+        {
+            if (!Hiesyou)
+            {
+                SayText.text = "からだがほてってきたのぅ";
+            }
+            if (Hiesyou)
+            {
+                SayText.text = "からだがもえてしまいそうじゃ";
+            }
+            Hiesyou = true;
+        }
+        else if (
             //わらい
             PinR.transform.position.x > -12.5f && PinR.transform.position.x < -8.5f &&
             PinR.transform.position.y > -6f && PinR.transform.position.y < -8 / 3f &&
@@ -156,6 +188,7 @@ public class SerihuChange : MonoBehaviour
             )
         {
             SayText.text = "うひゃひゃひゃひゃひゃ\nへんなとこささんでくれ,,,\nうひゃひゃ";
+            Warai = true;
         }
         else
         {

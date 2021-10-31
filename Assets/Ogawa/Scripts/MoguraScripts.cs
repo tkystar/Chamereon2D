@@ -9,8 +9,6 @@ public class MoguraScripts : MonoBehaviour
     Rigidbody2D rb;
 
     public GameObject m1;
-    public GameObject m2;
-    public GameObject m3;
 
     Vector3 Trans;
     DateTime presentTime;
@@ -29,9 +27,6 @@ public class MoguraScripts : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
-        pllist.Add(m1);
-        pllist.Add(m2);
-        pllist.Add(m3);
     }
 
     // Update is called once per frame
@@ -40,33 +35,47 @@ public class MoguraScripts : MonoBehaviour
     {
         if (Input.GetKey("left"))
         {
-            // pos に先頭キャラが移動したい場所
             poslist.Insert(0, this.transform.position);
-            // 必要のない座標を削除
-            while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 10);
-            // それぞれのプレイヤーを目標位置に移動
-            for (int i = 0; i < poslist.Count; i++)
+            m1.transform.position = poslist[10];
+            if (10 == poslist.Count)
             {
-                for (int j = 0; j < poslist.Count * 10; j = j + 10)
+                
+                for (int i = 0; i < 8; i++)
                 {
-                    pllist[i].transform.position = poslist[j];
+                    poslist.RemoveAt(i);
                 }
             }
-        }
-        if (Input.GetKey("right"))
-        {
-            // pos に先頭キャラが移動したい場所
-            poslist.Insert(0, this.transform.position);
-            // 必要のない座標を削除
-            while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 10);
-            // それぞれのプレイヤーを目標位置に移動
-            for (int i = 0; i < poslist.Count; i++)
-            {
-                for (int j = 0; j < poslist.Count * 10; j = j + 10)
-                {
-                    pllist[i].transform.position = poslist[j];
-                }
-            }
+            
         }
     }
 }
+//if (Input.GetKey("left"))
+//{
+//    // pos に先頭キャラが移動したい場所
+//    poslist.Insert(0, this.transform.position);
+//    // 必要のない座標を削除
+//    while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 20);
+//    // それぞれのプレイヤーを目標位置に移動
+//    for (int i = 0; i < poslist.Count; i++)
+//    {
+//        for (int j = 0; j < poslist.Count * 10; j = j + 10)
+//        {
+//            pllist[i].transform.position = poslist[j];
+//        }
+//    }
+//}
+//if (Input.GetKey("right"))
+//{
+//    // pos に先頭キャラが移動したい場所
+//    poslist.Insert(0, this.transform.position);
+//    // 必要のない座標を削除
+//    while (pllist.Count * 10 < poslist.Count) poslist.RemoveAt(pllist.Count * 10);
+//    // それぞれのプレイヤーを目標位置に移動
+//    for (int i = 0; i < poslist.Count; i++)
+//    {
+//        for (int j = 0; j < poslist.Count * 10; j = j + 10)
+//        {
+//            pllist[i].transform.position = poslist[j];
+//        }
+//    }
+//}

@@ -5,49 +5,31 @@ using UnityEngine;
 public class PartyMove : MonoBehaviour
 {
     public Rigidbody2D rb2;
-    public Rigidbody2D rb3 = null;
     public GameObject Camereon;
-    [SerializeField] private float Speed;
-    public Sprite left;
-    public Sprite right;
-    public Sprite up;
-    public Sprite down;
-    public GameObject player;
-
-    public GameObject mogura;
-
-    BoxCollider2D collider;
-    Vector3 playertransform;
-    Vector3 moguratransform;
-
-    Animator animator;
-    float colliderbox_x;
-    float colliderbox_y;
+    [SerializeField] public int Speed2;
+    public Sprite left2;
+    public Sprite right2;
+    public Sprite up2;
+    public Sprite down2;
+    public GameObject player2;
+    BoxCollider2D collider2;
+    Vector3 playertransform2;
+    public Animator animator2;
+    float colliderbox_x2;
+    float colliderbox_y2;
     public bool movinpermission2;
-
-    public Vector2 old1;
-    public Vector2 old2;
-    public Vector2 old3;
-    public Vector2 old4;
-
-    List<Vector3> poslist = new List<Vector3>();
-    List<GameObject> pllist = new List<GameObject>();
-    Vector2 pos;
-
+    public SpriteRenderer _renderer2;
     // Start is called before the first frame update
     void Start()
     {
         rb2 = this.GetComponent<Rigidbody2D>();
-        rb3 = mogura.GetComponent<Rigidbody2D>();
-        collider = this.gameObject.GetComponent<BoxCollider2D>();
-        playertransform = player.GetComponent<Transform>().transform.localScale;
-        moguratransform = mogura.GetComponent<Transform>().transform.localScale;
-        animator = this.GetComponent<Animator>();
-        colliderbox_x = this.GetComponent<BoxCollider2D>().size.x;
-        colliderbox_y = this.GetComponent<BoxCollider2D>().size.y;
+        collider2 = this.gameObject.GetComponent<BoxCollider2D>();
+        playertransform2 = player2.GetComponent<Transform>().transform.localScale;
+        animator2 = this.GetComponent<Animator>();
+        colliderbox_x2 = this.GetComponent<BoxCollider2D>().size.x;
+        colliderbox_y2 = this.GetComponent<BoxCollider2D>().size.y;
         movinpermission2 = true;
-
-        pllist.Add(mogura);
+        _renderer2 = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -55,50 +37,41 @@ public class PartyMove : MonoBehaviour
     {
         if (movinpermission2)
         {
-            Move();
+            Move2();
         }
-        pos = this.transform.position;
-        poslist.Insert(0,pos);
-        while (pllist.Count < poslist.Count) poslist.RemoveAt(pllist.Count);
-      
-       for (int i = 0; i < poslist.Count; i++)
-        {
-            pllist[i].transform.position=(poslist[i]);
-        }
-
     }
 
-    void Move()
+    void Move2()
     {
         if (Input.GetKey("left"))
         {
-            
-            rb2.velocity = new Vector2(-Speed / Time.deltaTime, 0);
-            animator.SetInteger("camereonTransition", 2);
-
+            rb2.velocity = new Vector2(-Speed2 * Time.deltaTime, 0);
+            animator2.SetInteger("camereonTransition", 2);
+            _renderer2.sprite = left2;
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
         else if (Input.GetKey("right"))
         {
-            rb2.velocity = new Vector2(Speed / Time.deltaTime, 0);
-            animator.SetInteger("camereonTransition", 3);
-
+            rb2.velocity = new Vector2(Speed2 * Time.deltaTime, 0);
+            animator2.SetInteger("camereonTransition", 3);
+            _renderer2.sprite = right2;
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
         else if (Input.GetKey("up"))
         {
-            rb2.velocity = new Vector2(0, Speed);
-            animator.SetInteger("camereonTransition", 0);
-
+            rb2.velocity = new Vector2(0, Speed2 * Time.deltaTime);
+            animator2.SetInteger("camereonTransition", 0);
+            _renderer2.sprite = up2;
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
         else if (Input.GetKey("down"))
         {
-            rb2.velocity = new Vector2(0, -Speed);
-            animator.SetInteger("camereonTransition", 1);
+            rb2.velocity = new Vector2(0, -Speed2 * Time.deltaTime);
+            animator2.SetInteger("camereonTransition", 1);
+            _renderer2.sprite = down2;
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
@@ -107,36 +80,33 @@ public class PartyMove : MonoBehaviour
 
         if (Input.GetKeyUp("left"))
         {
-            rb3.velocity = new Vector2(0, 0);
             rb2.velocity = new Vector2(0, 0);
-            animator.SetInteger("camereonTransition", 6);
+            animator2.SetInteger("camereonTransition", 6);
 
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
         else if (Input.GetKeyUp("right"))
         {
-            rb3.velocity = new Vector2(0, 0);
             rb2.velocity = new Vector2(0, 0);
-            animator.SetInteger("camereonTransition", 7);
+            animator2.SetInteger("camereonTransition", 7);
 
             //hoge.sizeDelta = new Vector2(x2, y2);
 
         }
         else if (Input.GetKeyUp("up"))
         {
-            rb3.velocity = new Vector2(0, 0);
             rb2.velocity = new Vector2(0, 0);
-            animator.SetInteger("camereonTransition", 4);
+            animator2.SetInteger("camereonTransition", 4);
 
             //hoge.sizeDelta = new Vector2(y1, x1);
 
         }
         else if (Input.GetKeyUp("down"))
         {
-            rb3.velocity = new Vector2(0, 0);
             rb2.velocity = new Vector2(0, 0);
-            animator.SetInteger("camereonTransition", 5);
+            animator2.SetInteger("camereonTransition", 5);
+
             //hoge.sizeDelta = new Vector2(y1, x1);
         }
 
@@ -146,7 +116,7 @@ public class PartyMove : MonoBehaviour
 
             //player.GetComponent<SpriteRenderer>().sprite = left;
             //player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(colliderbox_y, colliderbox_x);
+            collider2.size = new Vector2(colliderbox_y2, colliderbox_x2);
 
         }
         else if (Input.GetKeyDown("right"))
@@ -154,36 +124,21 @@ public class PartyMove : MonoBehaviour
 
             //player.GetComponent<SpriteRenderer>().sprite = left;
             //player.GetComponent<Transform>().transform.localScale = new Vector3(-1,1,1);
-            collider.size = new Vector2(colliderbox_y, colliderbox_x);
+            collider2.size = new Vector2(colliderbox_y2, colliderbox_x2);
         }
         else if (Input.GetKeyDown("up"))
         {
 
             // player.GetComponent<SpriteRenderer>().sprite = up;
             // player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(colliderbox_x, colliderbox_y);
+            collider2.size = new Vector2(colliderbox_x2, colliderbox_y2);
         }
         else if (Input.GetKeyDown("down"))
         {
 
             //player.GetComponent<SpriteRenderer>().sprite = down;
             //player.GetComponent<Transform>().transform.localScale = new Vector3(1, 1, 1);
-            collider.size = new Vector2(colliderbox_x, colliderbox_y);
+            collider2.size = new Vector2(colliderbox_x2, colliderbox_y2);
         }
     }
-    public void Stop()
-    {
-        rb2.velocity = Vector3.zero;
-        animator.SetFloat("Forward", 0);
-        animator.SetFloat("Turn", 0);
-        animator.SetBool("Crouch", false);
-    }
-
-    public void OnAnimatorMove()
-    {
-        Vector2 oldPos = this.transform.position;
-    }
-
-     
 }
-
