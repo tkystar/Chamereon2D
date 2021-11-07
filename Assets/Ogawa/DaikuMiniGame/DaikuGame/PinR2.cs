@@ -13,13 +13,13 @@ public class PinR2 : MonoBehaviour
     public Sprite Pick;
 
     public GameObject Serihu;
-    SerihuChange SerihuChan;
+    SerihuChangeV2 SerihuChan;
 
     void Awake()
     {
         thisImage = gameObject.GetComponent<SpriteRenderer>();
         thispos = this.transform.position;
-        SerihuChan = Serihu.GetComponent<SerihuChange>();
+        SerihuChan = Serihu.GetComponent<SerihuChangeV2>();
     }
 
     public void OnMouseDown()

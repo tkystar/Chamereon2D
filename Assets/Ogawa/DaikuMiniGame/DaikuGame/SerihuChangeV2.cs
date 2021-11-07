@@ -26,11 +26,19 @@ public class SerihuChangeV2 : MonoBehaviour
     public bool Hiesyou = false;
     public bool Warai = false;
 
-    public int PinCount = 0;
+    int PinCount = 0;
     bool Check = true;
 
     public GameObject Clear;
     bool ClearCheck = false;
+
+    //public GameObject HanteiXY;
+    //public GameObject HanteiX2;
+    //public GameObject HanteiX3;
+    //public GameObject HanteiX4;
+    //public GameObject HanteiY2;
+    //public GameObject HanteiY3;
+    //public GameObject HanteiY4;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +58,7 @@ public class SerihuChangeV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(PinCount);
         if (!ClearCheck)
         {
             if (Check)
@@ -59,7 +68,7 @@ public class SerihuChangeV2 : MonoBehaviour
                     PinCheck();
                 }
             }
-            if (Yotu && Katakori)
+            if (Yotu && Katakori && Warai && Hiesyou)
             {
                 Invoke("DaikuClear", 3.5f);
                 ClearCheck = true;
