@@ -13,6 +13,7 @@ public class DaikuTalkController : MonoBehaviour
     Rigidbody2D rigidBody;
     bool talktrigger;
     private Vector2 dis;
+    public GameObject minigameCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +98,12 @@ public class DaikuTalkController : MonoBehaviour
         //家を出て橋に歩いていくアニメーション
         this.gameObject.transform.position=new Vector3(201,13,0);
         GameObject.Find("Eagle").SetActive(false);
+    }
+
+    private void DesignBridge()
+    {
+        minigameCanvas.SetActive(true);
+        flowchart.SetBooleanVariable("DaikuTalkPossibility", false);
     }
 
     

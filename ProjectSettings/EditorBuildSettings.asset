@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Chamereon/Main/WesternScene1.2.unity
+    guid: 6b570f673aa45bb4cbc42e443674d120
+  - enabled: 1
+    path: Assets/Ogawa/DaikuMiniGame/Daiku.unity
+    guid: cad8bd594511cdd4f8372ec2c4d39771
   m_configObjects: {}
