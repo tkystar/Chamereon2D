@@ -48,6 +48,7 @@ public class DaikuTalkController : MonoBehaviour
         justmove.enabled = false;
         camereonanimator.SetInteger("camereonTransition", 7);
         
+
         flowchart.ExecuteBlock("Daiku");
 
         talktrigger = true;
